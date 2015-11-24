@@ -25,20 +25,17 @@ function isPrime($target){
 }
 
 
-$primes = array();
+
 
 echo("Is it prime?");
 echo("<br>");
-//for($i=2; $i<sqrt(600851475143); $i++){
-for($i=2; $i<sqrt(6008); $i++){
+for($i=2; $i<sqrt(600851475143); $i++){
+//for($i=2; $i<sqrt(6008); $i++){
 
 	if(isPrime($i)){
-		$primes[] = $i;
+		print($i . ",<br>");
 	}
 }
-
-
-print_r($primes);
 
 ?>
 
