@@ -31,20 +31,27 @@ echo("<a href='https://projecteuler.net/problem=14'>Project Euler - Problem 14</
 echo("<br>");
 echo("<br>");
 
-$seed = 13;
-echo("seed: " . $seed);
-echo("<br>");
-$next = nextCollatz($seed);
-while($next != 1){
-	echo($next);
+
+
+
+
+function collatz($seed){
+	$length = 0;
+
+	echo("seed: " . $seed);
 	echo("<br>");
-	$next = nextCollatz($next);
+	$next = nextCollatz($seed);
+	while($next != 1){
+		echo($next);
+		echo("<br>");
+		$next = nextCollatz($next);
+		$length += 1;
+	}
+
+	echo("Sequence beginning with " . $seed . " has " . $length . " elements.");
 }
 
-
-
-
-
+collatz(16);
 
 
 
