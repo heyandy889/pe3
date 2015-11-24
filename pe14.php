@@ -9,8 +9,7 @@ body{
 <?php
 
 ini_set("display_errors", TRUE);
-
-
+ini_set('max_execution_time', 60*5);
 
 function nextCollatz($current){
 
@@ -26,33 +25,34 @@ function nextCollatz($current){
 	return $next;
 }
 
+function collatz($seed){
+	$length = 1;
+	$next = nextCollatz($seed);
+	while($next > 1){
+		$next = nextCollatz($next);
+		$length += 1;
+	}
+
+	return $length + 1;
+}
+
+
+
 
 echo("<a href='https://projecteuler.net/problem=14'>Project Euler - Problem 14</a>");
 echo("<br>");
 echo("<br>");
 
-
-
-
-
-function collatz($seed){
-	$length = 0;
-
-	echo("seed: " . $seed);
-	echo("<br>");
-	$next = nextCollatz($seed);
-	while($next != 1){
-		echo($next);
-		echo("<br>");
-		$next = nextCollatz($next);
-		$length += 1;
-	}
-
-	echo("Sequence beginning with " . $seed . " has " . $length . " elements.");
+$lengths = array();
+$start = 77031;
+for($i=$start; $i<1000000; $i++){
+	$seed = $i;
+	$lengths[] = collatz($seed);
 }
-
-collatz(16);
-
+$max = max($lengths);
+echo("integer with longest sequence: " .  ($start + array_search($max, $lengths)));
+echo("<br>");
+echo("length of longest sequence: " .  $max);
 
 
 ?>
